@@ -1,0 +1,25 @@
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.30"
+        classpath "com.github.dcendents:android-maven-gradle-plugin:2.0"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

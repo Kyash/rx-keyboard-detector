@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
+group = 'co.kyash'
+version = "$versionMajor.$versionMinor.$versionPatch"
+
+android {
+    compileSdkVersion compileSdk as Integer
+
+    defaultConfig {
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk as Integer
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "$versionMajor.$versionMinor.$versionPatch"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            zipAlignEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    //==================== Kotlin ====================
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin"
+
+    //==================== Structure ====================
+    implementation "io.reactivex.rxjava2:rxjava:2.1.9"
+
+    //==================== Test ====================
+    testImplementation "junit:junit:4.12"
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+    testImplementation "org.robolectric:robolectric:3.5.1"
+}
+
+// build a jar with source files
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
