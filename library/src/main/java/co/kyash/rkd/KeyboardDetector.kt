@@ -10,7 +10,6 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import io.reactivex.Observable
 
-
 class KeyboardDetector constructor(
         private val activity: Activity?
 ) {

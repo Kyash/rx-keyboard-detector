@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RxKeyboardDetector</string>
+    <string name="opened">Opened</string>
+    <string name="closed">Closed</string>
 </resources>

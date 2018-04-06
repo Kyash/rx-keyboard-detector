@@ -9,10 +9,11 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/theme"
         android:elevation="4dp"
         app:elevation="4dp"
-        app:title="@string/app_name" />
+        app:title="@string/app_name"
+        app:titleTextColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
