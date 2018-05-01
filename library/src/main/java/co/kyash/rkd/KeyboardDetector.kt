@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import android.view.WindowManager
 import io.reactivex.Observable
 
 class KeyboardDetector constructor(
@@ -23,12 +22,6 @@ class KeyboardDetector constructor(
         if (activity == null) {
             Log.w(TAG, "Activity is null")
             return Observable.just(KeyboardStatus.CLOSED)
-        }
-
-        val softInputMethod = activity.window.attributes.softInputMode
-        if (WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE != softInputMethod
-                && WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED != softInputMethod) {
-            throw IllegalArgumentException("Activity window SoftInputMethod is not ADJUST_RESIZE")
         }
 
         val rootView = (activity.findViewById<View>(android.R.id.content) as ViewGroup)
