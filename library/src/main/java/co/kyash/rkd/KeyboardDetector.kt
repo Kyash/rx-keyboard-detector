@@ -24,7 +24,7 @@ class KeyboardDetector constructor(
             return Observable.just(KeyboardStatus.CLOSED)
         }
 
-        val rootView = (activity.findViewById<View>(android.R.id.content) as ViewGroup)
+        val rootView = (activity.findViewById<View>(android.R.id.content) as ViewGroup?)
 
         val windowHeight = DisplayMetrics().let {
             activity.windowManager.defaultDisplay.getMetrics(it)
@@ -33,6 +33,12 @@ class KeyboardDetector constructor(
 
         return Observable.create<KeyboardStatus> { emitter ->
             val listener = ViewTreeObserver.OnGlobalLayoutListener {
+                if (rootView == null) {
+                    Log.w(TAG, "Root view is null")
+                    emitter.onNext(KeyboardStatus.CLOSED)
+                    return@OnGlobalLayoutListener
+                }
+
                 val rect = Rect().apply { rootView.getWindowVisibleDisplayFrame(this) }
                 val keyboardHeight = windowHeight - rect.height()
 
@@ -43,12 +49,13 @@ class KeyboardDetector constructor(
                 }
             }
 
-            rootView.viewTreeObserver.addOnGlobalLayoutListener(listener)
+            rootView?.let {
+                it.viewTreeObserver.addOnGlobalLayoutListener(listener)
 
-            emitter.setCancellable {
-                rootView.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+                emitter.setCancellable {
+                    it.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+                }
             }
-
         }.distinctUntilChanged()
     }
 
