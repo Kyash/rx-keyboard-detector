@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.github.triplet.play'
 
 def versionMajor = 0
 def versionMinor = 1
@@ -50,6 +51,13 @@ android {
         textReport true
         textOutput 'stdout'
     }
+}
+
+play {
+    serviceAccountCredentials = file('publisher-key.json')
+    defaultToAppBundles = true
+    track = 'production' // internal/alpha/beta/production
+    releaseStatus = "inProgress" // completed/draft/inProgress/halted
 }
 
 dependencies {
