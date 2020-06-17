@@ -6,7 +6,8 @@
 /build
 /captures
 .externalNativeBuild
-publisher-key.json
+example/publisher-key.json
+example/release.keystore
 
 # not ignore
 !.idea/codeStyleSettings.xml
