@@ -3,7 +3,7 @@
 [![Build Status](https://circleci.com/gh/Kyash/rx-keyboard-detector.svg?style=shield)](https://circleci.com/gh/Kyash/rx-keyboard-detector/tree/master)
 [![JitPack](https://jitpack.io/v/Kyash/rx-keyboard-detector.svg)](https://jitpack.io/#Kyash/rx-keyboard-detector)
 
-Simple Android library to detect Keyboard `opened`/`closed` status by using RxJava2.
+Simple Android library to detect Keyboard `opened`/`closed` status by using RxJava3.
 
 ![demo.gif](art/demo.gif)
 
@@ -44,7 +44,7 @@ KeyboardDetector(this).observe().subscribe({ status ->
 ```
 
 ## Dependencies
-This library depends on RxJava2 and Kotlin
+This library depends on RxJava3 and Kotlin
 
 ## Thanks
 This library is inspired from these awesome code. Thank you so much!

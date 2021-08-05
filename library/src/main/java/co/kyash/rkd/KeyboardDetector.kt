@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 
 class KeyboardDetector constructor(
         private val activity: Activity?
