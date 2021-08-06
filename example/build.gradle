@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.github.triplet.play'
 
 def versionMajor = 0
 def versionMinor = 1
@@ -17,15 +16,6 @@ android {
         targetSdkVersion targetSdk_ as Integer
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "$versionMajor.$versionMinor.$versionPatch"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    signingConfigs {
-        release {
-            storeFile file("debug.keystore")
-            storePassword "android"
-            keyAlias "androiddebugkey"
-            keyPassword "android"
-        }
     }
     buildTypes {
         debug {
@@ -37,7 +27,7 @@ android {
             zipAlignEnabled true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
     }
     testOptions {
@@ -48,13 +38,6 @@ android {
         textReport true
         textOutput 'stdout'
     }
-}
-
-play {
-    serviceAccountCredentials = file('publisher-key.json')
-    defaultToAppBundles = true
-    track = 'production' // internal/alpha/beta/production
-    releaseStatus = "inProgress" // completed/draft/inProgress/halted
 }
 
 dependencies {
