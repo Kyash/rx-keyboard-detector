@@ -1,8 +1,8 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/android@1.0
+      - image: circleci/android:api-30
 
     working_directory: ~/repo
 
