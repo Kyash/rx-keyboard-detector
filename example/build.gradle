@@ -8,13 +8,13 @@ def versionMinor = 1
 def versionPatch = 0
 
 android {
-    compileSdkVersion compileSdk as Integer
+    compileSdk = compileSdk_ as Integer
     dataBinding.enabled = true
 
     defaultConfig {
         applicationId "co.kyash.vtl.sample"
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk as Integer
+        minSdk = minSdk_ as Integer
+        targetSdkVersion targetSdk_ as Integer
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName "$versionMajor.$versionMinor.$versionPatch"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -63,15 +63,12 @@ play {
 dependencies {
     implementation project(':library')
 
-    //==================== Kotlin ====================
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin"
-
     //==================== Support Library ====================
     implementation "com.android.support:appcompat-v7:$supportLibrary"
     implementation "com.android.support:design:$supportLibrary"
 
     //==================== Structure ====================
-    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
+    implementation "io.reactivex.rxjava3:rxjava:3.0.13"
 
     //==================== Test ====================
     testImplementation "junit:junit:4.13"

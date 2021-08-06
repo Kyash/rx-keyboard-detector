@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import co.kyash.rkd.KeyboardDetector
 import co.kyash.rkd.KeyboardStatus
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainActivity : AppCompatActivity() {
 
